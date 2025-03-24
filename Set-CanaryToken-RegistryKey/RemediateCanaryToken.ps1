@@ -1,5 +1,5 @@
 <#
-Version: 1.0
+Version: 2.0
 Author: 
 - Tom Coleman @albanytech
 Script: RemediateWhoAmiICanaryToken
@@ -19,13 +19,11 @@ $Name1 = 'GlobalFlag'
 $Name2 = 'ReportingMode'
 $Name3 = 'MonitorProcess'
 
-$Value1 = '00000512'
+$Value1 = '00000200'
 $Value2 = '00000001'
 ##Ensure you change ****INSERTYOURUNIQUECANARYTOKENHERE**** to the token you generate at https://www.canarytokens.org
 $Value3 = 'cmd.exe /c start /min powershell.exe -windowstyle hidden -command "$($u=$(\"u$env:username\" -replace(''[^\x00-\x7f]|\s'', ''''))[0..63] -join '''';$c=$(\"c$env:computername\" -replace(''[^\x00-\x7f]|\s'', ''''));Resolve-DnsName -Name \"$c.UN.$u.CMD.****INSERTYOURUNIQUECANARYTOKENHERE****.canarytokens.com\")"'
-
 $type = 'DWORD'
-
 
 Foreach ($i In $Path1)
 {
@@ -50,3 +48,4 @@ If (!(Test-Path $i)) {
 
 
 }
+
